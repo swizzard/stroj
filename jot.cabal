@@ -33,6 +33,7 @@ library
       base >=4.7 && <5,
       Hastodon,
       random,
+      random-fu,
       wordfilter
   exposed-modules:
       Toot, Util

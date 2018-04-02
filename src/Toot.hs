@@ -1,10 +1,13 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Toot
-    ( toot
+    ( getClient
+    , toot
     ) where
 
 import System.Environment (lookupEnv)
 import System.Random (randomRIO)
 import Text.Printf (printf)
+import Util
 import Web.Hastodon
 import Wordfilter (blacklisted)
 
@@ -15,15 +18,9 @@ getClient = do
   t <- lookupEnv "token"
   return $ HastodonClient <$> h <*> t
 
-letters :: [Char]
-letters = "bcdfghjklmnprstvwxyz"
-
-oneLetter :: IO Char
-oneLetter = (!!) <$> pure letters <*> (randomRIO (0, length letters - 1))
-
 newWord :: String -> IO String
 newWord w = do
-  nw <- (:) <$> oneLetter <*> pure (tail w)
+  nw <- (:) <$> getLetter <*> pure (tail w)
   bl <- blacklisted nw
   if bl then newWord w
         else return nw
@@ -32,6 +29,9 @@ makeToot :: String -> IO String
 makeToot w = do
   nw <- newWord w
   return $ printf "%s (jean %s)" w nw
+
+getTootText :: IO String
+getTootText = getWord >>= makeToot
 
 toot' :: HastodonClient -> String -> IO ()
 toot' c w = do
@@ -42,9 +42,5 @@ toot' c w = do
     (Right status) -> print status
   return ()
 
-toot :: String -> IO ()
-toot w = do
-  c <- getClient
-  case c of
-    Nothing -> print "configuration error"
-    (Just client) -> toot' client w
+toot :: HastodonClient -> IO ()
+toot c = getTootText >>= toot' c
