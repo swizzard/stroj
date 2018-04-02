@@ -8,4 +8,6 @@ Word list adapted from [dwyl/english-words](https://github.com/dwyl/english-word
 
 Hosted on Heroku
 
-Special shout-out to @parsonsmatt in the [haskell-beginners slack channel](https://functionalprogramming.slack.com) for some help with a thorny type issue.
+Special shout-outs to:
+* @parsonsmatt in the [haskell-beginners slack channel](https://functionalprogramming.slack.com) for some help with a thorny type issue.
+* [@c25l@wandering.shop](https://wandering.shop/@c25l) for helping me to work through iteration/sampling
