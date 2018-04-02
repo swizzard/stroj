@@ -33,14 +33,5 @@ makeToot w = do
 getTootText :: IO String
 getTootText = getWord >>= makeToot
 
-toot' :: HastodonClient -> String -> IO ()
-toot' c w = do
-  tootTxt <- makeToot w
-  s <- postStatus c tootTxt
-  case s of
-    (Left err) -> print err
-    (Right status) -> print status
-  return ()
-
 toot :: HastodonClient -> IO ()
-toot c = getTootText >>= toot' c
+toot c = getTootText >>= postStatus c >> return ()
