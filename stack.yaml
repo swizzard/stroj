@@ -2,8 +2,8 @@ flags: {}
 packages:
 - .
 extra-deps:
-- git: git@github.com:swizzard/hastodon
+- git: https://github.com/swizzard/hastodon
   commit: 7a7a120fa7b8f1c872e9c9375a5fcf0c8602d824
-- git: git@github.com:swizzard/wordfilter
+- git: https://github.com/swizzard/wordfilter
   commit: 1131ff6dae1e0d368d84ae216624493cc42d98eb
 resolver: lts-9.3
