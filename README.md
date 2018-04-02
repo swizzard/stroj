@@ -1,11 +1,11 @@
 # jot (jean bot)
-The complement of <a href="https://botsin.space/@jorts" title="_blank">jorts</a>
+The complement of [jorts](https://botsin.space/@jorts)
 
 # Credits
-Built by [https://swizzard.pizza](sam raker)
+Built by [sam raker](https://swizzard.pizza)
 
-Word list adapted from [https://github.com/dwyl/english-words](dwyl/english-words)
+Word list adapted from [dwyl/english-words](https://github.com/dwyl/english-words)
 
 Hosted on Heroku
 
-Special shout-out to @parsonsmatt in the [https://functionalprogramming.slack.com](haskell-beginners slack channel) for some help with a thorny type issue.
+Special shout-out to @parsonsmatt in the [haskell-beginners slack channel](https://functionalprogramming.slack.com) for some help with a thorny type issue.
