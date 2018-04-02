@@ -32,7 +32,6 @@ library
   build-depends:
       base >=4.7 && <5,
       Hastodon,
-      hedis,
       random,
       wordfilter
   exposed-modules:

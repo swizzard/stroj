@@ -5,15 +5,17 @@ import Data.Traversable (for)
 import System.Environment (lookupEnv, setEnv)
 import Paths_jot (getDataFileName)
 
+envKey = "WORDINDEX"
+
 getWords :: IO [String]
 getWords = getDataFileName "data/words.txt" >>=
            readFile >>= return . lines
 
 getIx :: IO (Maybe Int)
-getIx = (fmap read) <$> lookupEnv "wordIndex"
+getIx = (fmap read) <$> lookupEnv envKey
 
 setIx :: Int -> IO ()
-setIx i = setEnv "wordIndex" (show i)
+setIx i = setEnv envKey (show i)
 
 getWord' :: [String] -> Int -> Maybe String
 getWord' ws ix | ix >= length ws = Nothing
